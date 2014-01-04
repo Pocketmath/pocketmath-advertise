@@ -1,4 +1,8 @@
 pocketmath-advertiser-client
 ============================
 
-The PocketMath Advertiser Client -- FOR PUBLIC RELEASE
+A Ruby client for use with the PocketMath Advertiser API.
+
+  gem install pocketmath-advertiser-client
+
+Presently ALPHA.
