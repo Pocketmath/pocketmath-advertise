@@ -3,10 +3,10 @@ require 'open-uri'
 require 'net/http'
 require 'uri'
 
-GEOCODING_PROVIDER = :open # May also use :google (see Google Map API Terms of Service to determine licensing requirements)
-
 module PocketMath
   module PocketMath::Geocode
+
+    GEOCODING_PROVIDER = :open # May also use :google (see Google Map API Terms of Service to determine licensing requirements)
 
     private 
 
