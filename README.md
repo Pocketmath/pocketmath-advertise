@@ -1,7 +1,7 @@
-pocketmath-advertiser-client
-============================
+PocketMath Advertiser API
+=========================
 
-A Ruby client for use with the PocketMath Advertiser API.
+A Ruby Gem client for use with the PocketMath Advertiser API.
 
   gem install pocketmath-advertiser-client
 
