@@ -1,5 +1,4 @@
-require './pocketmath-geocode'
-require './pocketmath-advertiser'
+require 'pocketmath-advertise'
 
 require 'yaml'
 
