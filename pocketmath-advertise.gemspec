@@ -9,7 +9,8 @@ Gem::Specification.new do |s|
   s.files       = [
     'lib/pocketmath-advertise.rb',
     'lib/pocketmath-advertiser.rb',
-    'lib/pocketmath-geocode.rb'
+    'lib/pocketmath-geocode.rb',
+    'lib/model/insertion_order_stats.rb'
     ]
   s.homepage    = 'http://github.com/pocketmath/pocketmath-advertise'
   s.license     = 'Apache2'
