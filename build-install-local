@@ -1,0 +1,5 @@
+#!/bin/bash
+gem uninstall pocketmath-advertise
+gem build pocketmath-advertise.gemspec
+gem install --local pocketmath-advertise-0.0.1.pre.2.gem
+gem rdoc --rdoc pocketmath-advertise
