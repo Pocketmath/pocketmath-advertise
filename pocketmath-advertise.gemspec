@@ -14,5 +14,5 @@ Gem::Specification.new do |s|
     ]
   s.homepage    = 'http://github.com/pocketmath/pocketmath-advertise'
   s.license     = 'Apache2'
-  s.add_runtime_dependency 'curb', '~> 0'
+  s.add_runtime_dependency 'curb', '~> 0.8.5'
 end
