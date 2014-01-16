@@ -15,17 +15,21 @@ MAPQUEST_API_KEY = CREDENTIALS['mapquest_api_key']
 
 def create_gps_io(name, locations = [])
   
+  api_client = PocketMath::Advertiser::V1.open(POCKETMATH_API_KEY)
+  
+  geocode_client = PocketMath::Geocode.open( { :mapquest_api_key => MAPQUEST_API_KEY } )
+  
   # lookup GPS coordinates
   gps = []
   locations.each do |location|
-    gps = gps + PocketMath::Geocode.get_gps_coordinates(location)
+    gps = gps + geocode_client.get_gps_coordinates(location)
   end
   gps = gps.zip.flatten.compact # smooth all arrays into one
   
   # create and populate GPS list
   gps_list_name = "#{name} GPS list"
-  gps_list_id = PocketMath::Advertiser::V1.create_gps_list(gps_list_name)
-  upload_success = PocketMath::Advertiser::V1.upload_gps_list(gps_list_id, gps)
+  gps_list_id = api_client.create_gps_list(gps_list_name)
+  upload_success = api_client.upload_gps_list(gps_list_id, gps)
   
   raise "failed to upload GPS list" if !upload_success
   
@@ -68,10 +72,21 @@ def create_gps_io(name, locations = [])
     p insertion_order
     
   # hit the API with our new order!
-  io_id = PocketMath::Advertiser::V1.create_insertion_order( insertion_order )
+  io_id = api_client.create_insertion_order( insertion_order )
+  
+  geocode_client.close
+  
+  api_client.close
+  
   return io_id
   
 end
 
-io_id = create_gps_io "[Eric] Targeting Kim Jong-Un 1", [ "Pyongyang, North Korea" ]
+INSERTION_ORDER_NAME = ARGV[1]
+
+io_id = create_gps_io "#{INSERTION_ORDER_NAME}", [ "Pyongyang, North Korea" ]
 p "Check out your new IO: https://console.pocketmath.com/io/#{io_id}"
+
+#client = PocketMath::Advertiser::V1.open(POCKETMATH_API_KEY)
+#insertion_order_stats = client.get_insertion_order_stats("AAABQ34MJssABO-kX3eJGSCWpsQz6wrvspe-zA")
+#p JSON.generate(insertion_order_stats)
