@@ -16,7 +16,6 @@ MAPQUEST_API_KEY = CREDENTIALS['mapquest_api_key']
 def create_gps_io(name, locations = [])
   
   api_client = PocketMath::Advertiser::V1.open(POCKETMATH_API_KEY)
-  
   geocode_client = PocketMath::Geocode.open( { :mapquest_api_key => MAPQUEST_API_KEY } )
   
   # lookup GPS coordinates
